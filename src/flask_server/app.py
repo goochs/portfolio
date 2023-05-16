@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, redirect, url_for, render_template
-from sassutils.wsgi import SassMiddleware
 import os
 
 # instantiate the app
@@ -7,9 +6,6 @@ app = Flask(__name__)
 app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-app.wsgi_app = SassMiddleware(app.wsgi_app, {
-    'app': ('static/sass', 'static/css', '/static/css')
-})
 # Add test path
 @app.route('/')
 def home():
